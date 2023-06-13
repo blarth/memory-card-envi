@@ -5,12 +5,12 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const cardImages = [
-  { src: "/public/img/epi1.jpg", matched: false },
-  { src: "/public/img/epi2.jpg", matched: false },
-  { src: "/public/img/epi3.jpg", matched: false },
-  { src: "/public/img/epi4.jpg", matched: false },
-  { src: "/public/img/epi5.jpg", matched: false },
-  { src: "/public/img/epi6.jpg", matched: false },
+  { src: "/img/epi1.jpg", matched: false },
+  { src: "/img/epi2.jpg", matched: false },
+  { src: "/img/epi3.jpg", matched: false },
+  { src: "/img/epi4.jpg", matched: false },
+  { src: "/img/epi5.jpg", matched: false },
+  { src: "/img/epi6.jpg", matched: false },
 ];
 function formatTime(seconds) {
   const min = Math.floor(seconds / 60);
