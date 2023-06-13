@@ -6,7 +6,7 @@ body {
   margin: 0;
   font-size: 1.5em;
   text-align: center;
-  background-image: url(img/background.jpg);
+  background-image: url(public/img/background.jpg);
   background-repeat: no-repeat;
     /* Impede a repetição da imagem de fundo */
   background-size: cover;
