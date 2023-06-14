@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import useRank from "../../hooks/useRank";
-import { useEffect } from "react";
 
 export default function Rank() {
   const {rank} = useRank();
