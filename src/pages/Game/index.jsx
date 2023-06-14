@@ -3,6 +3,7 @@ import "./index.css";
 import SingleCard from "../../components/SingleCard";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useRank from "../../hooks/useRank";
 
 const cardImages = [
   { src: "/img/epi1.jpg", matched: false },
@@ -34,6 +35,7 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
+
 export function Game() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
@@ -43,6 +45,7 @@ export function Game() {
   const [counter, setCounter] = useState(0);
   const {auth} = useAuth();
   const navigate = useNavigate();
+  const {saveRank} = useRank();
   
   if(!auth) {
     window.location.href = "/"
@@ -95,12 +98,33 @@ export function Game() {
     }
   }, [choiceOne, choiceTwo]);
 
+  function endGameReset() {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setDisabled(false);
+    setCounter(0);
+    setTurns(0);
+    cards.forEach((card) => (card.matched = false));
+    shuffleCards();
+  }
+
+  useEffect(() => {
+    console.log(cards)
+    if (cards.length !== 0 && cards.every((card) => card.matched === true)) {	
+      saveRank({name: auth, turns, time: counter})
+      endGameReset();
+      alert("Parabéns, vocês ganharam!");
+      navigate("/ranking");
+    }
+  }, [cards]);
+
   // reset choices & increase turn
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
     setDisabled(false);
+    
   };
 
   // start new game automagically
