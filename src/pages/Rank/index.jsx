@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import useRank from "../../hooks/useRank";
+import { Button } from "../../components/formsComponents";
+import { Link } from "react-router-dom";
 
 export default function Rank() {
   const {rank} = useRank();
@@ -22,6 +24,7 @@ export default function Rank() {
   return (
     <Container>
       <h1>Ranking</h1>
+      <NavbarLink to="/">Começar com outro grupo</NavbarLink>
       <Table>
         <thead>
           <tr>
@@ -78,7 +81,25 @@ const Table = styled.table`
   }
 
   th {
-    background-color: #f2f2f2;
+    background-color: #bbbaba;
   }
 `;
+
+export const NavbarLink = styled(Link)`
+border: 1px solid black;
+  padding: 10px;
+  color: white;
+  font-size: x-large;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  margin: 10px;
+  &:hover,
+  &:focus {
+    color: blue;
+  }
+  &:active {
+    color: red;
+  }
+`;
+ 
 

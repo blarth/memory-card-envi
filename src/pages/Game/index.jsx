@@ -113,8 +113,8 @@ export function Game() {
     if (cards.length !== 0 && cards.every((card) => card.matched === true)) {	
       saveRank({name: auth, turns, time: counter})
       endGameReset();
-      alert("Parabéns, vocês ganharam!");
-      navigate("/ranking");
+      setTimeout(() => alert("Parabéns, vocês ganharam!"), 1000);
+      setTimeout(() => navigate("/ranking"), 1000);
     }
   }, [cards]);
 
