@@ -35,6 +35,9 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
+function resetMatchedCards(cards) {
+  return cards.map((card) => ({ ...card, matched: false }));
+}
 
 export function Game() {
   const [cards, setCards] = useState([]);
@@ -104,12 +107,11 @@ export function Game() {
     setDisabled(false);
     setCounter(0);
     setTurns(0);
-    cards.forEach((card) => (card.matched = false));
-    shuffleCards();
+    setTimeout(() => resetMatchedCards(cards), 3500);
+    //shuffleCards()
   }
 
   useEffect(() => {
-    console.log(cards)
     if (cards.length !== 0 && cards.every((card) => card.matched === true)) {	
       saveRank({name: auth, turns, time: counter})
       endGameReset();

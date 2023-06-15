@@ -2,9 +2,15 @@ import styled from "styled-components";
 import useRank from "../../hooks/useRank";
 import { Button } from "../../components/formsComponents";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 export default function Rank() {
+  const {auth}  = useAuth();
   const {rank} = useRank();
+
+  if(!auth) {
+    window.location.href = "/"
+  }
   const sortedRank = rank.sort((a, b) => {	
     if (a.turns < b.turns) {
       return -1;

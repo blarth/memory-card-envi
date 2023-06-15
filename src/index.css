@@ -11,4 +11,5 @@ body {
     /* Impede a repetição da imagem de fundo */
   background-size: cover;
   color: #fff;
+  -webkit-text-stroke: 1px black;
 }
